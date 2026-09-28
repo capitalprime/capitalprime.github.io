@@ -30,6 +30,7 @@
           <div class="field"><label for="password">Contraseña</label><input id="password" name="password" type="password" autocomplete="current-password" required></div>
           <button class="primary full" type="submit">Iniciar sesión y continuar</button>
           <button id="magicLink" class="secondary full" style="margin-top:12px" type="button">Enviarme un enlace de acceso</button>
+          <button id="resetPassword" class="secondary full" style="margin-top:12px" type="button">Crear o restablecer contraseña</button>
           <p class="small">También puedes entrar sin contraseña. Supabase enviará un enlace que regresa a esta autorización.</p>
         </form>
 
@@ -67,7 +68,7 @@
     const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_TzcB_Wejva9qOJQxMd6JBg_Xtn9Cg1I';
     const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
     const authorizationId = new URLSearchParams(location.search).get('authorization_id');
-    const els = Object.fromEntries(['loading','error','login','setup','done','consent','missing','title','lead','email','password','magicLink','newPassword','confirmPassword','signedInAs','clientName','permissions','approve','deny','signOut'].map(id=>[id,document.getElementById(id)]));
+    const els = Object.fromEntries(['loading','error','login','setup','done','consent','missing','title','lead','email','password','magicLink','resetPassword','newPassword','confirmPassword','signedInAs','clientName','permissions','approve','deny','signOut'].map(id=>[id,document.getElementById(id)]));
 
     function show(name){ for(const id of ['loading','login','setup','done','consent','missing']) els[id].classList.toggle('hidden',id!==name); }
     function fail(message){ els.error.textContent=message||'No pudimos completar la solicitud.'; els.error.classList.remove('hidden'); }
@@ -130,6 +131,16 @@
       els.magicLink.disabled=false;
       if(error){ fail(error.message); return; }
       show('done'); els.title.textContent='Revisa tu correo'; els.lead.textContent='Abre el nuevo enlace de Supabase para regresar a esta autorización.';
+    });
+    els.resetPassword.addEventListener('click',async()=>{
+      clearError();
+      const email=els.email.value.trim();
+      if(!email){ fail('Escribe tu correo para crear o restablecer la contraseña.'); els.email.focus(); return; }
+      els.resetPassword.disabled=true;
+      const {error}=await supabase.auth.resetPasswordForEmail(email,{redirectTo:`${location.origin}/`});
+      els.resetPassword.disabled=false;
+      if(error){ fail(error.message); return; }
+      show('done'); els.title.textContent='Revisa tu correo'; els.lead.textContent='Abre el enlace de recuperación y crea una contraseña para tu cuenta KCS.';
     });
     els.setup.addEventListener('submit',async(event)=>{
       event.preventDefault(); clearError();
