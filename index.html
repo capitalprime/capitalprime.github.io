@@ -64,7 +64,7 @@
     import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
     const SUPABASE_URL = 'https://ylkkwlroruxwnmmhwjlf.supabase.co';
-    const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_ltaNA7nnVozoSCOcZIjg';
+    const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_TzcB_Wejva9qOJQxMd6JBg_Xtn9Cg1I';
     const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
     const authorizationId = new URLSearchParams(location.search).get('authorization_id');
     const els = Object.fromEntries(['loading','error','login','setup','done','consent','missing','title','lead','email','password','magicLink','newPassword','confirmPassword','signedInAs','clientName','permissions','approve','deny','signOut'].map(id=>[id,document.getElementById(id)]));
