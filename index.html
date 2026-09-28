@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Autoriza de forma segura el acceso de asistentes AI al inventario de permisos de Kitchen Cabinet & Stone.">
+  <meta name="color-scheme" content="dark">
+  <title>Autorizar acceso · KCS Permit Intelligence</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2308131f'/%3E%3Cpath d='M17 17v30M47 17 25 32l22 15' fill='none' stroke='%2338d6b4' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <style>
+    :root{--ink:#f6f8fb;--muted:#a8b5c5;--panel:#0f1d2b;--line:#26394c;--accent:#38d6b4;--accent2:#7ee8d0;--danger:#ff7185;--shadow:0 28px 80px rgba(0,0,0,.42)}
+    *{box-sizing:border-box}html{min-height:100%;background:#07111b}body{min-height:100vh;margin:0;color:var(--ink);font:16px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(circle at 15% 10%,rgba(56,214,180,.14),transparent 32rem),radial-gradient(circle at 90% 90%,rgba(70,125,255,.12),transparent 30rem),#07111b;display:grid;place-items:center;padding:24px}.shell{width:min(100%,560px)}.brand{display:flex;align-items:center;gap:12px;margin:0 0 18px 4px;color:var(--muted);font-size:.88rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700}.mark{display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(56,214,180,.45);border-radius:10px;color:var(--accent);font-size:1.1rem}.card{background:linear-gradient(155deg,rgba(18,35,51,.98),rgba(11,25,38,.98));border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}.top{padding:34px 34px 22px;border-bottom:1px solid var(--line)}.eyebrow{color:var(--accent);font-size:.82rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;margin:0 0 10px}h1{font-size:clamp(1.7rem,5vw,2.35rem);line-height:1.12;letter-spacing:-.035em;margin:0 0 12px}.lead{color:var(--muted);margin:0}.body{padding:28px 34px 34px}.hidden{display:none!important}.status{display:flex;align-items:center;gap:10px;color:var(--muted);min-height:120px;justify-content:center;text-align:center}.spinner{width:20px;height:20px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:999px;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}label{display:block;color:#dce5ef;font-weight:700;margin:0 0 7px}input{width:100%;border:1px solid var(--line);background:#081521;color:var(--ink);border-radius:12px;padding:13px 14px;font:inherit;outline:none;transition:.18s}input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(56,214,180,.14)}.field{margin-bottom:16px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}button{border:0;border-radius:12px;padding:13px 16px;font:inherit;font-weight:800;cursor:pointer;transition:transform .15s,opacity .15s,background .15s}button:hover{transform:translateY(-1px)}button:disabled{opacity:.55;cursor:wait;transform:none}.primary{background:var(--accent);color:#051611}.secondary{background:#192b3c;color:var(--ink);border:1px solid #31485d}.danger{background:transparent;color:#ff9aaa;border:1px solid rgba(255,113,133,.42)}.full{width:100%}.client{display:flex;gap:14px;align-items:center;padding:16px;border:1px solid var(--line);border-radius:16px;background:#0a1825;margin-bottom:20px}.client-icon{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:rgba(56,214,180,.12);color:var(--accent);font-weight:900;font-size:1.2rem;flex:none}.client strong{display:block;font-size:1.05rem}.client span{display:block;color:var(--muted);font-size:.88rem}.permissions{list-style:none;margin:0;padding:0}.permissions li{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid rgba(38,57,76,.7)}.permissions li:last-child{border-bottom:0}.check{color:var(--accent);font-weight:900}.small{font-size:.86rem;color:var(--muted);margin:18px 0 0}.error{border:1px solid rgba(255,113,133,.38);background:rgba(255,113,133,.09);color:#ffc2cb;border-radius:12px;padding:12px 14px;margin:0 0 16px}.session{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:-5px 0 20px;padding-bottom:16px;border-bottom:1px solid var(--line);font-size:.88rem;color:var(--muted)}.link{background:none;padding:0;color:var(--accent2);font-weight:700}.foot{text-align:center;color:#738397;font-size:.78rem;margin:16px 0 0}@media(max-width:520px){body{padding:14px}.top,.body{padding-left:22px;padding-right:22px}.actions{grid-template-columns:1fr}.card{border-radius:20px}}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="brand"><div class="mark">K</div><span>KCS Permit Intelligence</span></div>
+    <section class="card" aria-live="polite">
+      <header class="top">
+        <p class="eyebrow">Conexión segura</p>
+        <h1 id="title">Autorizar acceso</h1>
+        <p class="lead" id="lead">Revisa la solicitud antes de conectar tu asistente.</p>
+      </header>
+      <div class="body">
+        <div id="loading" class="status"><span class="spinner" aria-hidden="true"></span><span>Preparando la solicitud…</span></div>
+        <div id="error" class="error hidden" role="alert"></div>
+
+        <form id="login" class="hidden">
+          <div class="field"><label for="email">Correo</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="password">Contraseña</label><input id="password" name="password" type="password" autocomplete="current-password" required></div>
+          <button class="primary full" type="submit">Iniciar sesión y continuar</button>
+          <button id="magicLink" class="secondary full" style="margin-top:12px" type="button">Enviarme un enlace de acceso</button>
+          <p class="small">También puedes entrar sin contraseña. Supabase enviará un enlace que regresa a esta autorización.</p>
+        </form>
+
+        <form id="setup" class="hidden">
+          <div class="field"><label for="newPassword">Crea una contraseña</label><input id="newPassword" name="newPassword" type="password" autocomplete="new-password" minlength="8" required></div>
+          <div class="field"><label for="confirmPassword">Confirma la contraseña</label><input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" minlength="8" required></div>
+          <button class="primary full" type="submit">Guardar contraseña</button>
+          <p class="small">Esta contraseña protege tu cuenta KCS y se guarda únicamente en Supabase.</p>
+        </form>
+
+        <div id="done" class="hidden">
+          <div class="client"><div class="client-icon">✓</div><div><strong>Cuenta lista</strong><span>Ya puedes volver a ChatGPT e iniciar la conexión MCP.</span></div></div>
+        </div>
+
+        <div id="consent" class="hidden">
+          <div class="session"><span id="signedInAs"></span><button id="signOut" class="link" type="button">Cambiar cuenta</button></div>
+          <div class="client"><div class="client-icon">AI</div><div><strong id="clientName">Aplicación</strong><span>solicita acceso a KCS Permit Intelligence</span></div></div>
+          <ul class="permissions" id="permissions"></ul>
+          <div class="actions"><button id="deny" class="danger" type="button">Rechazar</button><button id="approve" class="primary" type="button">Autorizar conexión</button></div>
+          <p class="small">Puedes revocar esta conexión desde la configuración de aplicaciones OAuth de Supabase.</p>
+        </div>
+
+        <div id="missing" class="hidden">
+          <p>Esta página debe abrirse desde una solicitud de conexión válida de ChatGPT, Claude u otro cliente MCP.</p>
+        </div>
+      </div>
+    </section>
+    <p class="foot">Acceso protegido por Supabase OAuth 2.1 · Nunca compartimos tu contraseña con el cliente conectado.</p>
+  </main>
+
+  <script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+    const SUPABASE_URL = 'https://ylkkwlroruxwnmmhwjlf.supabase.co';
+    const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_ltaNA7nnVozoSCOcZIjg';
+    const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+    const authorizationId = new URLSearchParams(location.search).get('authorization_id');
+    const els = Object.fromEntries(['loading','error','login','setup','done','consent','missing','title','lead','email','password','magicLink','newPassword','confirmPassword','signedInAs','clientName','permissions','approve','deny','signOut'].map(id=>[id,document.getElementById(id)]));
+
+    function show(name){ for(const id of ['loading','login','setup','done','consent','missing']) els[id].classList.toggle('hidden',id!==name); }
+    function fail(message){ els.error.textContent=message||'No pudimos completar la solicitud.'; els.error.classList.remove('hidden'); }
+    function clearError(){ els.error.classList.add('hidden'); els.error.textContent=''; }
+    function setBusy(busy){ els.approve.disabled=busy; els.deny.disabled=busy; }
+    function scopeLabel(scope){ return ({openid:'Confirmar tu identidad',email:'Ver tu correo de cuenta',profile:'Ver la información básica de tu perfil',offline_access:'Mantener la conexión activa de forma segura'})[scope] || `Usar el permiso “${scope}”`; }
+
+    async function recoverSessionFromUrl(){
+      const query=new URLSearchParams(location.search);
+      const hash=new URLSearchParams(location.hash.slice(1));
+      const code=query.get('code');
+      if(code){
+        const {error}=await supabase.auth.exchangeCodeForSession(code);
+        if(error) throw error;
+        history.replaceState(null,'',location.pathname);
+        return;
+      }
+      const accessToken=hash.get('access_token');
+      const refreshToken=hash.get('refresh_token');
+      if(accessToken&&refreshToken){
+        const {error}=await supabase.auth.setSession({access_token:accessToken,refresh_token:refreshToken});
+        if(error) throw error;
+        history.replaceState(null,'',location.pathname);
+      }
+    }
+
+    async function loadRequest(){
+      clearError();
+      await recoverSessionFromUrl();
+      const {data:{session}}=await supabase.auth.getSession();
+      if(!authorizationId){
+        if(session){ show('setup'); els.title.textContent='Completa tu cuenta'; els.lead.textContent='Crea una contraseña para finalizar la invitación de acceso.'; return; }
+        show('missing'); els.title.textContent='Solicitud no encontrada'; els.lead.textContent='Inicia la conexión desde tu cliente MCP.'; return;
+      }
+      if(!session){ show('login'); els.title.textContent='Inicia sesión'; els.lead.textContent='Confirma tu identidad para revisar la solicitud.'; return; }
+      const {data,error}=await supabase.auth.oauth.getAuthorizationDetails(authorizationId);
+      if(error){ show('missing'); fail(error.message); return; }
+      if(data.redirect_url){ location.assign(data.redirect_url); return; }
+      els.signedInAs.textContent=session.user.email?`Sesión: ${session.user.email}`:'Sesión verificada';
+      els.clientName.textContent=data.client?.name || data.client_name || 'Cliente MCP';
+      const scopes=data.scopes || data.scope?.split(' ') || ['openid'];
+      els.permissions.replaceChildren(...scopes.map(scope=>{const li=document.createElement('li');const icon=document.createElement('span');icon.className='check';icon.textContent='✓';const text=document.createElement('span');text.textContent=scopeLabel(scope);li.append(icon,text);return li;}));
+      show('consent'); els.title.textContent='Autorizar acceso'; els.lead.textContent='Esta aplicación quiere conectarse a tu inventario de permisos.';
+    }
+
+    els.login.addEventListener('submit',async(event)=>{
+      event.preventDefault(); clearError(); const button=event.submitter; button.disabled=true;
+      const {error}=await supabase.auth.signInWithPassword({email:els.email.value.trim(),password:els.password.value});
+      els.password.value=''; button.disabled=false;
+      if(error){ fail('No se pudo iniciar sesión. Revisa el correo y la contraseña.'); return; }
+      show('loading'); await loadRequest();
+    });
+    els.magicLink.addEventListener('click',async()=>{
+      clearError();
+      const email=els.email.value.trim();
+      if(!email){ fail('Escribe tu correo para recibir el enlace de acceso.'); els.email.focus(); return; }
+      els.magicLink.disabled=true;
+      const redirectTo=`${location.origin}/oauth/consent?authorization_id=${encodeURIComponent(authorizationId)}`;
+      const {error}=await supabase.auth.signInWithOtp({email,options:{shouldCreateUser:false,emailRedirectTo:redirectTo}});
+      els.magicLink.disabled=false;
+      if(error){ fail(error.message); return; }
+      show('done'); els.title.textContent='Revisa tu correo'; els.lead.textContent='Abre el nuevo enlace de Supabase para regresar a esta autorización.';
+    });
+    els.setup.addEventListener('submit',async(event)=>{
+      event.preventDefault(); clearError();
+      if(els.newPassword.value!==els.confirmPassword.value){ fail('Las contraseñas no coinciden.'); return; }
+      const button=event.submitter; button.disabled=true;
+      const {error}=await supabase.auth.updateUser({password:els.newPassword.value});
+      els.newPassword.value=''; els.confirmPassword.value=''; button.disabled=false;
+      if(error){ fail(error.message); return; }
+      show('done'); els.title.textContent='Acceso preparado'; els.lead.textContent='Tu identidad autorizada quedó configurada correctamente.';
+    });
+    els.approve.addEventListener('click',async()=>{ clearError(); setBusy(true); const {data,error}=await supabase.auth.oauth.approveAuthorization(authorizationId); if(error){fail(error.message);setBusy(false);return;} location.assign(data.redirect_url); });
+    els.deny.addEventListener('click',async()=>{ clearError(); setBusy(true); const {data,error}=await supabase.auth.oauth.denyAuthorization(authorizationId); if(error){fail(error.message);setBusy(false);return;} location.assign(data.redirect_url); });
+    els.signOut.addEventListener('click',async()=>{ await supabase.auth.signOut(); show('login'); els.title.textContent='Inicia sesión'; els.lead.textContent='Confirma tu identidad para revisar la solicitud.'; });
+
+    loadRequest().catch(error=>{show('missing');fail(error.message);});
+  </script>
+</body>
+</html>
